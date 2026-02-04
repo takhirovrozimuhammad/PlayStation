@@ -1,12 +1,24 @@
 # ps-reception (PS + PC Reception Panel)
-Minimal Next.js (App Router) skeleton for a reception panel that manages **PlayStation + PC** in one system.
 
-## Concepts
-- **Zone**: PS room / PC room / VIP / etc.
-- **Station**: a unit inside a zone (e.g., PS-1, PS-2, PC-1, PC-2)
-- **Session**: active usage with timer + payment
-- **Reservation**: booking in the future
+This is a **starter UI** for a reception panel that manages **PlayStation + PC** in one system,
+connected to **Supabase** (PostgreSQL).
 
-## Run
-1) Install deps
-2) Start dev server
+## What works now
+- UI shell (Sidebar/Topbar)
+- Zones page reads `zones` from Supabase
+- Stations page reads `stations` from Supabase
+- Station detail page reads one station by id (UUID) and shows basic timer UI
+
+## Setup
+1) Install deps:
+   npm i
+
+2) Create `.env.local`:
+   NEXT_PUBLIC_SUPABASE_URL=...
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+
+3) Run:
+   npm run dev
+
+## Notes
+- Auth + RLS + realtime will be added next.

@@ -1,12 +1,15 @@
-export default function PaymentSummary(){
+import { money } from "@/lib/format";
+import Box from "@/components/ui/Box";
+
+export default function PaymentSummary({ baseHourPrice }: { baseHourPrice: number }){
   return (
-    <div style={{padding:16,border:"1px solid #2a2a33",borderRadius:16,background:"#12121a"}}>
-      <div style={{fontWeight:800, marginBottom:8}}>Payment</div>
-      <div style={{display:"grid", gap:6, opacity:.85}}>
-        <div>Rate: -- so'm / hour</div>
+    <Box>
+      <div style={{fontWeight:900, marginBottom:8}}>Payment (demo)</div>
+      <div style={{display:"grid", gap:6, opacity:.9}}>
+        <div>Base rate: {money(baseHourPrice ?? 0)} / hour</div>
         <div>Used: -- minutes</div>
-        <div style={{fontWeight:900}}>Total: -- so'm</div>
+        <div style={{fontWeight:950}}>Total: -- so'm</div>
       </div>
-    </div>
+    </Box>
   )
 }

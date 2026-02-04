@@ -1,6 +1,7 @@
-export default function Button({ children }: { children: React.ReactNode }) {
+export default function Button({ children, onClick }: { children: React.ReactNode; onClick?: () => void }) {
   return (
     <button
+      onClick={onClick}
       style={{
         padding: "10px 14px",
         borderRadius: 14,
@@ -8,7 +9,7 @@ export default function Button({ children }: { children: React.ReactNode }) {
         background: "#1c1c28",
         color: "#fff",
         cursor: "pointer",
-        fontWeight: 700
+        fontWeight: 800
       }}
     >
       {children}

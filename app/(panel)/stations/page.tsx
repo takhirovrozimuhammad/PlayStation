@@ -4,7 +4,7 @@ export default function StationsPage(){
   return (
     <main style={{padding:20}}>
       <h2 style={{marginTop:0}}>Stations</h2>
-      <p style={{opacity:.75}}>Each station is a PS or PC unit (PS-1, PC-1...)</p>
+      <p style={{opacity:.75}}>Station = PS-1 / PC-1 kabi birlik. Status realtime bo'ladi (keyin).</p>
       <StationsGrid />
     </main>
   )

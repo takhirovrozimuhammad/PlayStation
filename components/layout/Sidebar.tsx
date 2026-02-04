@@ -10,7 +10,7 @@ export default function Sidebar(){
   return (
     <aside style={{padding:14, borderRight:"1px solid #1d1d27", background:"#0e0e14"}}>
       <div style={{padding:12, border:"1px solid #2a2a33", borderRadius:16, background:"#12121a"}}>
-        <div style={{fontWeight:700}}>Reception</div>
+        <div style={{fontWeight:900}}>Reception</div>
         <div style={{opacity:.75, fontSize:12}}>PS + PC</div>
       </div>
 
