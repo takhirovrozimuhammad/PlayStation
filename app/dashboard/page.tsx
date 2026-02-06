@@ -1,9 +1,10 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import TopBar from "../../components/TopBar";
-import InfoZoneCard from "../../components/InfoZoneCard";
 import { isAuthed } from "../../lib/auth";
 import { supabaseServer } from "../../lib/supabase/server";
+import DashboardClient from "../../components/dashboard/DashboardClient";
+import ThemeToggle from "../../components/ui/ThemeToggle";
 
 export default async function DashboardPage() {
   if (!isAuthed()) redirect("/login");
@@ -23,7 +24,17 @@ export default async function DashboardPage() {
   if (zErr || sErr) {
     return (
       <main style={{ padding: 18, maxWidth: 1320, margin: "0 auto" }}>
-        <TopBar rightSlot={<span className="pill" style={{ padding: "10px 14px", fontWeight: 950 }}>Dashboard</span>} />
+        <TopBar
+          rightSlot={
+            <>
+              <span className="pill" style={{ padding: "10px 14px", fontWeight: 950 }}>
+                Dashboard
+              </span>
+              <ThemeToggle />
+              <LogoutButton />
+            </>
+          }
+        />
         <div className="glass" style={{ marginTop: 14, padding: 16 }}>
           <div style={{ fontWeight: 950 }}>Supabase error</div>
           <div className="muted" style={{ marginTop: 6 }}>
@@ -34,44 +45,30 @@ export default async function DashboardPage() {
     );
   }
 
-  const byZone = new Map<string, any[]>();
-  for (const s of stations ?? []) {
-    const key = (s as any).zone_id as string;
-    byZone.set(key, [...(byZone.get(key) ?? []), s]);
-  }
-
   return (
     <main style={{ padding: 18, maxWidth: 1320, margin: "0 auto" }}>
       <TopBar
         rightSlot={
           <>
-            <span className="pill" style={{ padding: "10px 14px", fontWeight: 950 }}>Dashboard</span>
+            <span className="pill" style={{ padding: "10px 14px", fontWeight: 950 }}>
+              Admin
+            </span>
+            <span className="pill" style={{ padding: "10px 14px", fontWeight: 950 }}>
+              🪙 152,000
+            </span>
+            <Link className="btn" href="/">
+              Public Info
+            </Link>
+            <ThemeToggle />
             <LogoutButton />
           </>
         }
       />
 
-      <div className="glass" style={{ marginTop: 14, padding: 14 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-          <div className="pill" style={{ padding: "10px 14px", fontWeight: 950 }}>Admin panel</div>
-          <Link className="btn" href="/">Public Info</Link>
-        </div>
-
-        <div className="muted" style={{ marginTop: 10 }}>
-          Hozircha: ko‘rish (read-only). Keyin: booking start/stop, price edit, reservation.
-        </div>
-
-        <div className="grid3" style={{ marginTop: 14 }}>
-          {(zones ?? []).map((z: any) => (
-            <InfoZoneCard
-              key={z.id}
-              zoneName={z.name}
-              zoneDesc={z.description}
-              stations={(byZone.get(z.id) ?? []) as any}
-            />
-          ))}
-        </div>
-      </div>
+      <DashboardClient
+        zones={(zones ?? []) as any}
+        stations={(stations ?? []) as any}
+      />
     </main>
   );
 }
@@ -79,7 +76,9 @@ export default async function DashboardPage() {
 function LogoutButton() {
   return (
     <form action="/api/logout" method="post">
-      <button className="btn" type="submit">Logout</button>
+      <button className="btn" type="submit">
+        Logout
+      </button>
     </form>
   );
 }
