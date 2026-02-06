@@ -3,7 +3,7 @@ import Link from "next/link";
 import TopBar from "../../components/TopBar";
 import { isAuthed } from "../../lib/auth";
 import { supabaseServer } from "../../lib/supabase/server";
-import DashboardClient from "../../components/dashboard/DashboardClient";
+import DashboardClient from "../components/dashboard/DashboardClient";
 import ThemeToggle from "../../components/ui/ThemeToggle";
 
 export default async function DashboardPage() {
