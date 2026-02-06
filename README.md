@@ -1,24 +1,19 @@
-# ps-reception (PS + PC Reception Panel)
+# PS+PC Reception Interface (React/Next.js)
 
-This is a **starter UI** for a reception panel that manages **PlayStation + PC** in one system,
-connected to **Supabase** (PostgreSQL).
+This project recreates the **layout & UI blocks** from the reference screenshot (Rooms board):
+- Top header (logo, admin, balance, Add Booking)
+- Inner board header (Rooms pill, Add Room button)
+- 3-column card grid + right detail panel
+- Bottom navigation
+- Basic interactions:
+  - click a room card -> details appear on the right panel
+  - Add Booking / Add Room open simple modal
 
-## What works now
-- UI shell (Sidebar/Topbar)
-- Zones page reads `zones` from Supabase
-- Stations page reads `stations` from Supabase
-- Station detail page reads one station by id (UUID) and shows basic timer UI
+## Run
+1) npm i
+2) npm run dev
+3) open http://localhost:3000/panel
 
-## Setup
-1) Install deps:
-   npm i
-
-2) Create `.env.local`:
-   NEXT_PUBLIC_SUPABASE_URL=...
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=...
-
-3) Run:
-   npm run dev
-
-## Notes
-- Auth + RLS + realtime will be added next.
+Notes:
+- No '@' alias is used. Only ./ and ../ relative imports.
+- Data is mock for now; later we connect Supabase.

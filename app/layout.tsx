@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Reception Panel",
-  description: "PS + PC reception panel",
+  title: "Reception UI",
+  description: "PS + PC reception interface"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
