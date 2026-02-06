@@ -138,7 +138,7 @@ export default function DashboardClient({
             devicePrice={x.minPrice ? `${money(x.minPrice)} / soat` : "—"}
             footerPrice={x.minPrice ? `${money(x.minPrice)} / soat` : "—"}
             onClick={() => setSelectedId(x.zone.id)}
-          />
+          /> 
         ))}
 
         {/* Right big details panel */}
