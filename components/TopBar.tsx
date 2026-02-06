@@ -1,10 +1,7 @@
 import Link from "next/link";
+import ThemeToggle from "./ui/ThemeToggle";
 
-export default function TopBar({
-  rightSlot,
-}: {
-  rightSlot?: React.ReactNode;
-}) {
+export default function TopBar({ rightSlot }: { rightSlot?: React.ReactNode }) {
   return (
     <div className="glass" style={{ padding: 14, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -16,6 +13,7 @@ export default function TopBar({
 
       <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", justifyContent: "flex-end" }}>
         {rightSlot}
+        <ThemeToggle />
         <Link className="btn" href="/login">Login</Link>
       </div>
     </div>
