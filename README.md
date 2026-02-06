@@ -1,19 +1,21 @@
-# PS+PC Reception Interface (React/Next.js)
+# PS + PC Club (Supabase, real data)
 
-This project recreates the **layout & UI blocks** from the reference screenshot (Rooms board):
-- Top header (logo, admin, balance, Add Booking)
-- Inner board header (Rooms pill, Add Room button)
-- 3-column card grid + right detail panel
-- Bottom navigation
-- Basic interactions:
-  - click a room card -> details appear on the right panel
-  - Add Booking / Add Room open simple modal
+## Pages
+- `/` Public Info Page (real data from Supabase): zones + stations availability + prices
+- `/login` Simple staff login (temporary hardcoded credentials)
+- `/dashboard` Staff dashboard (protected by cookie)
 
-## Run
-1) npm i
-2) npm run dev
-3) open http://localhost:3000/panel
+## Temporary login
+- Login: 883393339
+- Password: hacker
 
-Notes:
-- No '@' alias is used. Only ./ and ../ relative imports.
-- Data is mock for now; later we connect Supabase.
+## Setup
+1) `npm i`
+2) Create `.env.local` from `.env.example`
+3) `npm run dev`
+4) Open http://localhost:3000
+
+## Supabase tables expected
+- `zones(id, name, description)`
+- `stations(id, zone_id, code, type, status, base_hour_price)`
+(Exactly like the SQL we created earlier.)
